@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+        body {
+            width: 300px;
+            height: auto;
+            font-family: 'Varela Round', sans-serif;
+        }
+        div {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 25%;
+            padding: 5px;
+            font-size: 2.5em;
+            background-color: #1DB954;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            font-family: 'Varela Round', sans-serif;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition-duration: 0.3s;
+        }
+div:hover {
+            background-color: black;
+            transform: translateX(-50%) scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Sign-In With Your Spotify Account to Use This Extension</h1>
+    <div id='sign-in'>Sign In</div>
+    <script src="./popup-script.js"></script>
+</body>
+</html>
