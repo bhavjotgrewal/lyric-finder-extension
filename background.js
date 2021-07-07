@@ -3,6 +3,8 @@ const RESPONSE_TYPE = encodeURIComponent('token');
 const REDIRECT_URI = encodeURIComponent('https://mgaeknoaamdledbjmekkjlhelciloknk.chromiumapp.org/');
 const SCOPE = encodeURIComponent('user-read-currently-playing');
 const SHOW_DIALOG = encodeURIComponent('true');
+const lyricsFinder = require('lyrics-finder');
+const { title } = require('process');
 let STATE = '';
 let ACCESS_TOKEN = '';
 
@@ -38,16 +40,15 @@ function callApi(method, url, body, callback){
 function  printInfo() {
     if (this.status == 200) {
         var data = JSON.parse(this.responseText);
-        var song = data.item.name
+        var title = data.item.name
         var artist = data.item.artists[0].name
-        getLyrics(song, artist);
+        getLyrics(artist, title);
     }
 }
 
-async function getLyrics (song, artist) {
-    let response = await fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`);
-    let data = await response.json();
-    return alert(data.lyrics);
+async function getLyrics(artist, title) {
+    let lyrics = await lyricsFinder(artist, title) || "Not Found!";
+    return alert(lyrics);
 }
 
 
